@@ -15,7 +15,7 @@ module Webui
       def update
         errors = []
     
-        authorize @package, :save_meta_update?
+        authorize @package, policy_class: ::Packages::MetaPolicy
     
         if FlagHelper.xml_disabled_for?(@meta_xml, 'sourceaccess')
           errors << 'admin rights are required to raise the protection level of a package'

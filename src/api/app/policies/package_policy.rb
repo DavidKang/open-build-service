@@ -15,10 +15,6 @@ class PackagePolicy < ApplicationPolicy
     user.can_modify?(record)
   end
 
-  def save_meta_update?
-    update? && !source_access?
-  end
-
   def project_source_access?
     record.project.disabled_for?('sourceaccess', nil, nil)
   end
