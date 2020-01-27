@@ -1,0 +1,9 @@
+body.responsive-ux {
+  .navbar-dark .navbar-nav .nav-link {
+    color: $gray-400;
+
+    &:hover {
+        color: $gray-300;
+    }
+  }
+}
