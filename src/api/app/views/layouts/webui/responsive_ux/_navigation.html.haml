@@ -16,6 +16,20 @@
       %ul.navbar-nav.ml-auto.text-nowrap
         = render partial: "layouts/#{responsive_namespace}/logged_in_user_navigation"
 
+- if User.session
+  %nav.navbar.fixed-bottom.navbar-dark.bg-dark
+    %ul.nav.justify-content-center.w-100.nav-fill
+      %li.nav-item
+        = link_to project_show_path(User.session!.home_project_name), class: 'btn btn-dark nav-link', alt: "Home project" do
+          %i.fas.fa-home.fa-lg
+      %li.nav-item
+        = link_to my_tasks_path, class: 'btn btn-dark nav-link', alt: "Tasks" do
+          %i.fas.fa-list.fa-lg
+      %li.nav-item
+        = link_to "#", class: 'btn btn-dark nav-link', alt: "Watchlist" do
+          %i.fas.fa-bookmark.fa-lg
+
+
 :javascript
   $(function () {
     $('[data-toggle="offcanvas"]').on('click', function () {
