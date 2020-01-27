@@ -62,3 +62,5 @@
     .container-fluid.py-4.mt-4.bg-dark#footer
       .container
         = render partial: "layouts/#{responsive_namespace}/footer"
+    - if User.session
+      = render partial: "layouts/#{responsive_namespace}/bottom_navigation"
