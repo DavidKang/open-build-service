@@ -355,5 +355,13 @@ module Webui::WebuiHelper
     build_problems = remaining_build_problems.shift(show_builds)
     return checks, build_problems, remaining_checks, remaining_build_problems
   end
+
+  def flipper_responsive?
+    Flipper.enabled?(:responsive_ux, User.possibly_nobody)
+  end
+
+  def responsive_namespace
+    flipper_responsive? ? 'webui/responsive_ux' : 'webui'
+  end
 end
 # rubocop:enable Metrics/ModuleLength
