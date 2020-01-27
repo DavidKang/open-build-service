@@ -5,9 +5,10 @@
     .d-flex
       = render partial: "layouts/#{responsive_namespace}/search"
       - if User.session
-        %button.navbar-toggler.ml-3{ 'type': 'button', data: { toggle: 'collapse', target: '#global-navigation' },
+        %button.navbar-toggler.ml-3.collapsed{ 'type': 'button', data: { toggle: 'collapse', target: '#global-navigation' },
                                 aria: { controls: 'global-navigation', expanded: 'false', label: 'Toggle navigation' } }
-          %span.navbar-toggler-icon
+          %i.fas.fa-bars
+          %i.fas.fa-times
       - else
         = render partial: "layouts/#{responsive_namespace}/personal_navigation"
   - if User.session

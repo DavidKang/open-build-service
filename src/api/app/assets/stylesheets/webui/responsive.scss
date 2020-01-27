@@ -1,9 +1,27 @@
 body.responsive-ux {
-  .navbar-dark .navbar-nav .nav-link {
-    color: $gray-400;
+    .navbar-dark {
+        button.navbar-toggler {
+            .fas.fa-times {
+                display: block;
+            }
+            .fas.fa-bars {
+                display: none;
+            }
+            &.collapsed {
+                .fas.fa-times {
+                    display: none;
+                }
+                .fas.fa-bars {
+                    display: block;
+                }
+            }
+        }
+        .navbar-nav .nav-link {
+            color: $gray-400;
 
-    &:hover {
-        color: $gray-300;
+            &:hover {
+               color: $gray-300;
+            }
+        }
     }
-  }
 }
