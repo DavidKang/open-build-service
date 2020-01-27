@@ -5,13 +5,21 @@
     .d-flex
       = render partial: "layouts/#{responsive_namespace}/search"
       - if User.session
-        %button.navbar-toggler.ml-3.collapsed{ 'type': 'button', data: { toggle: 'collapse', target: '#global-navigation' },
+        %button.navbar-toggler.ml-3{ 'type': 'button', data: { toggle: 'offcanvas', target: '#global-navigation' },
                                 aria: { controls: 'global-navigation', expanded: 'false', label: 'Toggle navigation' } }
           %i.fas.fa-bars
           %i.fas.fa-times
       - else
         = render partial: "layouts/#{responsive_namespace}/personal_navigation"
   - if User.session
-    .collapse.navbar-collapse#global-navigation
+    .navbar-collapse.offcanvas-collapse#global-navigation
       %ul.navbar-nav.ml-auto.text-nowrap
         = render partial: "layouts/#{responsive_namespace}/logged_in_user_navigation"
+
+:javascript
+  $(function () {
+    $('[data-toggle="offcanvas"]').on('click', function () {
+      $('.offcanvas-collapse').toggleClass('open');
+      $('.navbar-toggler').toggleClass('open');
+    })
+  })
