@@ -1,0 +1,20 @@
+%li.py-3.border-bottom
+  %span.h5 List of projects you are watching
+- if params[:project]
+  %li.nav-item.pb-2.border-bottom
+    %a#toggle-watch{ href: project_toggle_watch_path(params[:project]), class: 'nav-link' }
+      - if User.session!.watches? params[:project]
+        %p.mb-0
+          Remove #{params[:project]} project
+        %small.text-muted
+          Do not watch this project anymore
+      - else
+        %p.mb-0
+          Add #{params[:project]} project
+        %small.text-muted
+          Watch this project
+- User.session!.watched_project_names.each_with_index do |project, index|
+  = link_to project_show_path(project), class: "nav-link project-link text-wrap text-word-break-all #{'border-top' unless index.zero?}" do
+    %i.fa.fa-cubes.text-light.pt-2
+    %span.small
+      = project

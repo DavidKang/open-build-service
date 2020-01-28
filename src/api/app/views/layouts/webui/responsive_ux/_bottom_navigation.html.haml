@@ -10,5 +10,16 @@
         - if tasks.positive?
           .badge.badge-primary= tasks
     %li.nav-item
-      = link_to "#", class: 'btn btn-dark nav-link', alt: "Watchlist" do
+      = link_to("#", class: 'btn btn-dark nav-link', alt: "Watchlist", data: { toggle: 'watchlist' }) do
         %i.fas.fa-bookmark.fa-lg
+
+.navbar-collapse.watchlist-collapse
+  %ul.navbar-nav.ml-auto.text-nowrap
+    = render partial: "layouts/#{responsive_namespace}/watchlist"
+
+:javascript
+  $(function () {
+    $('[data-toggle="watchlist"]').on('click', function () {
+      $('.watchlist-collapse').toggleClass('open');
+    })
+  })
