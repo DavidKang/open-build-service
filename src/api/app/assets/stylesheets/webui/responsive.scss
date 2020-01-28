@@ -36,7 +36,7 @@ body.responsive-ux {
   }
 
   .offcanvas-collapse {
-    top: 56px; /* Height of navbar */
+    top: 57px; /* Height of navbar */
     bottom: 0;
   }
 
@@ -45,13 +45,6 @@ body.responsive-ux {
     bottom: 58px; /* Height of navbar */
     color: $gray-400;
 
-    .navbar-nav .nav-link {
-      color: $gray-400;
-
-      &:hover {
-        color: $gray-300;
-      }
-    }
   }
 
   .watchlist-collapse, .offcanvas-collapse {
@@ -67,15 +60,18 @@ body.responsive-ux {
     transition: transform .3s ease-in-out, visibility .3s ease-in-out;
     transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
     z-index: 9000;
-  }
-  .watchlist-collapse.open, .offcanvas-collapse.open {
-    visibility: visible;
-    -webkit-transform: translateX(-100%);
-    transform: translateX(-100%);
-    z-index: 9000;
+
+    &.open {
+      visibility: visible;
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      z-index: 9000;
+    }
   }
 
+  #top-navigation { border-bottom: 1px solid $gray-500 !important;  }
   #bottom_navigation {
+    border-top: 1px solid $gray-500 !important;
     height: 58px;
   }
 
