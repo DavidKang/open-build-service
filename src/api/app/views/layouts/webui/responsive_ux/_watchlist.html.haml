@@ -1,5 +1,6 @@
-%li.py-3.border-bottom
+%li.py-3.border-bottom.border-gray-500
   %span.h5 List of projects you are watching
+
 - if params[:project]
   %li.nav-item.pb-2.border-bottom
     %a#toggle-watch{ href: project_toggle_watch_path(params[:project]), class: 'nav-link' }

@@ -44,7 +44,10 @@ body.responsive-ux {
     top: 0;
     bottom: 58px; /* Height of navbar */
     color: $gray-400;
+  }
 
+  .border-gray-500 {
+    border-color: $gray-500 !important;
   }
 
   .watchlist-collapse, .offcanvas-collapse {
@@ -69,9 +72,7 @@ body.responsive-ux {
     }
   }
 
-  #top-navigation { border-bottom: 1px solid $gray-500 !important;  }
   #bottom_navigation {
-    border-top: 1px solid $gray-500 !important;
     height: 58px;
   }
 
