@@ -358,8 +358,8 @@ module Webui::WebuiHelper
 
   # responsive_ux: used only in beta feature
   def home_project_link
+    return project_show_path(User.session!.home_project_name) if User.session!.home_project
     new_project_path(name: User.session!.home_project_name)
-    project_show_path(User.session!.home_project) if User.session!.home_project
   end
 
   # responsive_ux:
