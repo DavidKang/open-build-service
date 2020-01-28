@@ -13,9 +13,8 @@
       = link_to("#", class: 'btn btn-dark nav-link', alt: "Watchlist", data: { toggle: 'watchlist' }) do
         %i.fas.fa-bookmark.fa-lg
 
-  .navbar-collapse.watchlist-collapse
-    .navbar-nav
-      = render partial: "layouts/#{responsive_namespace}/watchlist"
+
+  = render partial: "layouts/#{responsive_namespace}/watchlist"
 
 :javascript
   $(function () {

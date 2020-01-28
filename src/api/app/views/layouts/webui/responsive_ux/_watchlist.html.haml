@@ -1,25 +1,26 @@
-.nav.justify-content-end.py-2
-  %button.navbar-toggler{ 'type': 'button', data: { toggle: 'watchlist' }, aria: { expanded: 'false', label: 'Toggle navigation' } }
-    %i.fas.fa-times
+.navbar-collapse.watchlist-collapse
+  .navbar-nav
+    .nav.justify-content-end.py-2
+      %button.navbar-toggler{ 'type': 'button', data: { toggle: 'watchlist' }, aria: { expanded: 'false', label: 'Toggle navigation' } }
+        %i.fas.fa-times
 
-.h5 List of projects you are watching
+    - if params[:project]
+      .nav-item.pb-2.mb-4.border-bottom.border-gray-500
+        .h6.text-word-break-all Project #{params[:project]}
+        %a#toggle-watch{ href: project_toggle_watch_path(params[:project]), class: 'nav-link' }
+          - if User.session!.watches? params[:project]
+            %p.mb-0.text-light
+              %i.fas.fa-times-circle
+              %span Remove this project from Watchlist
+          - else
+            %p.mb-0.text-light
+              %i.fas.fa-plus-circle
+              %span Watch this project
 
-- if params[:project]
-  .nav-item.pb-2.border-bottom
-    %a#toggle-watch{ href: project_toggle_watch_path(params[:project]), class: 'nav-link' }
-      - if User.session!.watches? params[:project]
-        %p.mb-0
-          Remove #{params[:project]} project
-        %small.text-muted
-          Do not watch this project anymore
-      - else
-        %p.mb-0
-          Add #{params[:project]} project
-        %small.text-muted
-          Watch this project
+    .h5.pt-2 Projects you are watching
 
-- User.session!.watched_project_names.each_with_index do |project, index|
-  = link_to project_show_path(project), class: "nav-link project-link text-wrap text-word-break-all #{'border-top' unless index.zero?}" do
-    %i.fa.fa-cubes.text-light.pt-2
-    %span.small
-      = project
+    .list-group.list-group-flush
+      - User.session!.watched_project_names.each_with_index do |project, index|
+        = link_to project_show_path(project), class: "nav-link bg-dark text-word-break-all list-group-item border-0 text-light" do
+          %i.fas.fa-cubes
+          #{project}
