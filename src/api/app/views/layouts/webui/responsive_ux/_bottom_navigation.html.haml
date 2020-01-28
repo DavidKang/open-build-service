@@ -1,4 +1,4 @@
-%nav.navbar.fixed-bottom.navbar-dark.bg-dark.border-top.border-gray-500#bottom_navigation
+%nav.navbar.fixed-bottom.navbar-dark.bg-dark.border-top.border-gray-500#bottom-navigation
   %ul.nav.justify-content-center.w-100.nav-fill
     %li.nav-item
       = link_to(home_project_link, class: 'btn btn-dark nav-link', alt: "Home project") do
@@ -14,7 +14,7 @@
         %i.fas.fa-bookmark.fa-lg
 
   .navbar-collapse.watchlist-collapse
-    %ul.navbar-nav.ml-auto.text-nowrap
+    .navbar-nav
       = render partial: "layouts/#{responsive_namespace}/watchlist"
 
 :javascript

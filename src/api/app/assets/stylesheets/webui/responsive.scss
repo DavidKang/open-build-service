@@ -7,7 +7,7 @@ body.responsive-ux {
   // open space to not overlap bottom navigation with footer
   padding-bottom: 58px !important;
 
-  .navbar-dark {
+  #navigation {
     button.navbar-toggler {
       .fas.fa-times {
         display: none;
@@ -72,8 +72,15 @@ body.responsive-ux {
     }
   }
 
-  #bottom_navigation {
+  #bottom-navigation {
     height: 58px;
+
+    button.navbar-toggler {
+      line-height: 1.875rem;
+      .fas.fa-times {
+        width: 20px;
+      }
+    }
   }
 
   // END LAYOUT
