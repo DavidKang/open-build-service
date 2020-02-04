@@ -1,0 +1,11 @@
+- if CONFIG['kerberos_mode']
+  = link_to 'Log In', new_session_path, class: 'btn btn-outline-light ml-3 text-nowrap'
+- else
+  - if access_params[:can_sign_up]
+    = link_to('Sign Up', access_params[:sign_up_url], class: 'nav-link ml-3 text-light d-none d-md-block')
+  .dropdown.d-none.d-md-block
+    = link_to('#', id: 'login-trigger', class: 'btn btn-outline-light ml-3 text-nowrap ', 'data-toggle': 'dropdown') do
+      Log In
+    .dropdown-menu.dropdown-menu-right.shadow-lg.bg-dark.top-of-flash{ 'aria-labelledby': 'dropdownMenuButton' }
+      .px-4.py-3#login-form
+        = render partial: 'layouts/webui/responsive_ux/log_in', locals: access_params.merge(navigation_top: true)

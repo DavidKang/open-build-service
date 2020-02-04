@@ -1,0 +1,15 @@
+.navbar-dark.bg-dark#login-form-canvas
+  .navbar-nav
+    .nav.justify-content-end.py-2
+      %button.navbar-toggler{ 'type': 'button', data: { toggle: 'log-in' }, aria: { expanded: 'false', label: 'Toggle log-in' } }
+        %i.fas.fa-times.d-block
+  .card.text-dark
+    .card-body
+      = link_to(root_path, class: 'd-block text-center', alt: 'Logo') do
+        = image_tag('favicon.svg', height: '60')
+
+      .login-form
+        .h2.text-center.py-2 Log In
+        = render partial: 'layouts/webui/responsive_ux/log_in', locals: access_params
+      - if CONFIG['proxy_auth_mode'] != :on && access_params[:can_sign_up]
+        = render partial: 'layouts/webui/responsive_ux/sign_up'
