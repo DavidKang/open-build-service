@@ -3,10 +3,19 @@ $(function () {
     $('.offcanvas-collapse').toggleClass('open');
     $('.navbar-toggler').toggleClass('open');
     $('.watchlist-collapse').removeClass('open');
+    $('.contextual-collapse').removeClass('open');
   });
 
   $('[data-toggle="watchlist"]').on('click', function () {
     $('.watchlist-collapse').toggleClass('open');
+    $('.navbar-toggler').removeClass('open');
+    $('.offcanvas-collapse').removeClass('open');
+    $('.contextual-collapse').removeClass('open');
+  });
+
+  $('[data-toggle="contextual"]').on('click', function () {
+    $('.contextual-collapse').toggleClass('open');
+    $('.watchlist-collapse').removeClass('open');
     $('.navbar-toggler').removeClass('open');
     $('.offcanvas-collapse').removeClass('open');
   });

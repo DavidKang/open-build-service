@@ -6,6 +6,8 @@
       = render partial: "layouts/#{responsive_namespace}/search"
       - if User.session
         .toggler.pt-1
+          %i.fas.fa-th.fa-lg{ class: 'nav-link text-light', alt: 'Contextual', data: { toggle: 'contextual' } }
+        .toggler.pt-1
           %i.fas.fa-bookmark.fa-lg{ class: 'nav-link text-light', alt: 'Watchlist', data: { toggle: 'watchlist' } }
         .toggler
           - tasks = User.session!.tasks
