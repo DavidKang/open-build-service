@@ -103,41 +103,38 @@ body.responsive-ux {
       visibility: visible;
       -webkit-transform: translateX(-100%);
       transform: translateX(-100%);
-      z-index: 9000;
     }
   }
 
   .contextual-collapse {
-      visibility: hidden;
-      position: fixed;
-      left: 0;
-      height: 330px;
+    position: fixed;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    max-height: 300px;
+    padding-bottom: 1.5rem;
+    background-color: #343a40;
+    color: $gray-400;
+    border-radius: 0.5rem 0.5rem 0 0;
+    transition: bottom .3s ease-in-out;
+    z-index: 1020;
+    overflow-y: scroll;
+
+    & a {
+      color: $gray-300;
+      &:hover { color: white; }
+    }
+
+    .grid-col-3 {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-column-gap: 1rem;
+      grid-row-gap: 1.5rem;
+    }
+
+    &.open {
       bottom: 58px;
-      width: 100%;
-      background-color: #343a40;
-      color: $gray-400;
-      border-radius: 0.5rem 0.5rem 0 0;
-
-      & a {
-          color: $gray-300;
-          &:hover { color: white; }
-      }
-
-      .grid-col-3 {
-          display: grid;
-          grid-template-columns: auto auto auto;
-          grid-column-gap: 1rem;
-          grid-row-gap: 1.5rem;
-      }
-
-      &.open {
-          visibility: visible;
-          z-index: 9000;
-      }
-
-      .fas {
-          width: 40px;
-      }
+    }
   }
 
   // FOOTER
@@ -176,11 +173,8 @@ body.responsive-ux {
     }
 
     .contextual-collapse {
-        visibility: hidden;
-        position: fixed;
         left: initial;
         right: 0;
-        height: 400px;
         top: 57px;
         bottom: initial;
         width: 330px;

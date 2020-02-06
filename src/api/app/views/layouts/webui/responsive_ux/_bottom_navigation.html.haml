@@ -3,10 +3,10 @@
   %ul.nav.justify-content-center.w-100.nav-fill
     - if User.session
       %li.nav-item
-        = link_to('#', class: 'btn btn-dark nav-link', alt: 'Contextual menu', data: { toggle: 'contextual' }) do
+        = link_to('javascript:void(0)', class: 'btn btn-dark nav-link', alt: 'Contextual menu', data: { toggle: 'contextual' }) do
           %i.fas.fa-th.fa-lg
       %li.nav-item.border-left.border-gray-500
-        = link_to('#', class: 'btn btn-dark nav-link', alt: 'Watchlist', data: { toggle: 'watchlist' }) do
+        = link_to('javascript:void(0)', class: 'btn btn-dark nav-link', alt: 'Watchlist', data: { toggle: 'watchlist' }) do
           %i.fas.fa-bookmark.fa-lg
       %li.nav-item.border-left.border-gray-500
         - tasks = User.session!.tasks
@@ -15,7 +15,7 @@
           - if tasks.positive?
             .badge.badge-primary.align-text-top= tasks
       %li.nav-item.border-left.border-gray-500
-        = link_to('#', class: 'btn btn-dark nav-link', alt: 'Menu', data: { toggle: 'offcanvas' }) do
+        = link_to('javascript:void(0)', class: 'btn btn-dark nav-link', alt: 'Menu', data: { toggle: 'offcanvas' }) do
           %i.fas.fa-bars.fa-lg
     - elsif CONFIG['kerberos_mode']
       %li.nav-item
