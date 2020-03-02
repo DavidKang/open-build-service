@@ -30,5 +30,19 @@ body.responsive-ux {
       .footer-logged { padding-bottom: 0; }
     }
     // END LAYOUT
+
+    .key-content{
+      .icon {
+        flex-basis: 14rem;
+        align-self: center;
+      }
+      .info { flex-basis: 100%; }
+      .download {
+        flex-basis: 10rem;
+        align-self: center;
+      }
+
+    }
+
   }
 }
