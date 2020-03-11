@@ -1,0 +1,3 @@
+class NotificationPolicy < ApplicationPolicy
+
+end

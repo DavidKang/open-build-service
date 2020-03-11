@@ -1,0 +1,42 @@
+.row
+  .col-12.col-md-4.col-lg-3#notifications-filter-desktop
+    .card
+      .card-body
+        .row.list-group-flush
+          = link_to('Inbox', user_notifications_path, class: 'list-group-item list-group-item-action')
+          = link_to('Done', user_notifications_path(type: 'done'), class: 'list-group-item list-group-item-action')
+        .row.list-group-flush.mt-5
+          %h5.ml-3 Filter
+          = link_to('Reviews', user_notifications_path(type: 'reviews'), class: 'list-group-item list-group-item-action')
+          = link_to('Comments', user_notifications_path(type: 'comments'), class: 'list-group-item list-group-item-action')
+          = link_to('State Changes', user_notifications_path(type: 'state_changes'), class: 'list-group-item list-group-item-action')
+        .row.list-group-flush.mt-5
+          %h5.ml-3 Projects
+        .row.list-group-flush.mt-5
+          %h5.ml-3 Packages
+
+  .col-12.col-md-8.col-lg-9#notifications-list
+    .card
+      = form_with(url: set_done_user_notifications_path, method: 'post') do
+        .card-body
+          .row.mb-3
+            = submit_tag('Done')
+          .row
+            - @notifications.each do |n|
+              - notification = NotificationPresenter.new(n)
+              .list-group.w-100
+                .list-group-item
+                  .row
+                    .col-lg-1
+                      = check_box_tag('notification_ids[]', n.id)
+                    .col-lg-7
+                      .row
+                        = link_to(n.title, notification.link_to_notification_target)
+                      .row
+                        %p
+                    .col-lg-2
+                      %span.badge.badge-secondary
+                        #{notification.notification_batch}
+                    .col-lg-2
+                      %small.text-muted
+                        3 days ago

@@ -275,6 +275,10 @@ OBSApi::Application.routes.draw do
 
     resources :users, controller: 'webui/users', param: :login, constraints: cons do
       resources :requests, only: [:index], controller: 'webui/users/bs_requests'
+      resources :notifications, only: [:index], controller: 'webui/users/notifications'
+      resource :notifications, controller: 'webui/users/notifications' do
+        post 'set_done', on: :member
+      end
       collection do
         get 'autocomplete'
         get 'tokens'
