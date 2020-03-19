@@ -8,33 +8,25 @@
 
       .card-body.collapse#filters
         .row.list-group-flush
-          = link_to('Inbox', user_notifications_path,
-                             class: "list-group-item list-group-item-action #{'active' unless params[:type]}")
-          = link_to('Done', user_notifications_path(type: 'done'),
-                            class: "list-group-item list-group-item-action #{'active' if params[:type] == 'done'}")
+          = user_notification_link('inbox', filter: params[:type])
+          = user_notification_link('done', filter: params[:type])
         .row.list-group-flush.mt-5
           %h5.ml-3 Filter
-          = link_to('Reviews', user_notifications_path(type: 'reviews'),
-                               class: "list-group-item list-group-item-action #{'active' if params[:type] == 'reviews'}")
-          = link_to('Comments', user_notifications_path(type: 'comments'),
-                                class: "list-group-item list-group-item-action #{'active' if params[:type] == 'comments'}")
-          = link_to('State Changes', user_notifications_path(type: 'state_changes'),
-                                     class: "list-group-item list-group-item-action #{'active' if params[:type] == 'state_changes'}")
-
+          = user_notification_link('reviews', filter: params[:type])
+          = user_notification_link('comments', filter: params[:type])
+          = user_notification_link('state_changes', filter: params[:type])
   .col-md-8.col-lg-9#notifications-list
     .card
-      = form_with(url: set_done_user_notifications_path, method: 'post') do
-        .card-body
-          .mb-3
-            = submit_tag('Done')
-          - @notifications.each do |n|
-            - notification = NotificationPresenter.new(n)
-            .d-flex.flex-column
-              .notification-item.d-flex.flex-nowrap.px-3.py-3.border-bottom
-                .d-flex.align-items-start
-                  = check_box_tag('notification_ids[]', n.id, nil, class: 'mt-1 mr-2')
-                .d-flex.flex-column.flex-sm-row.flex-fill
-                  = link_to(n.title, notification.link_to_notification_target, class: 'order-1 order-sm-0')
-                  .text-nowrap.ml-sm-auto.order-0.order-sm-1
+      .card-body
+        - @notifications.each do |n|
+          - notification = NotificationPresenter.new(n)
+          .d-flex.flex-column
+            .notification-item.d-flex.flex-nowrap.px-3.py-3.border-bottom
+              .d-flex.flex-column.flex-sm-row.justify-content-sm-between.flex-fill
+                .text.pb-3
+                  .text-nowrap
                     %span.badge.badge-secondary #{notification.notification_batch}
                     %small.text-muted #{time_ago_in_words(notification.created_at)}
+                  = link_to(n.title, notification.link_to_notification_target)
+                .actions.align-self-end.align-self-sm-start.pl-3
+                  = link_to('Done', 'notification', method: :put, class: 'btn btn-sm btn-success px-4')
