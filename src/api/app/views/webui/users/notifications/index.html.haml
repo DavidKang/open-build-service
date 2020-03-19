@@ -3,13 +3,18 @@
     .card.mb-3
       .card-body
         .row.list-group-flush
-          = link_to('Inbox', user_notifications_path, class: 'list-group-item list-group-item-action')
-          = link_to('Done', user_notifications_path(type: 'done'), class: 'list-group-item list-group-item-action')
+          = link_to('Inbox', user_notifications_path,
+                             class: "list-group-item list-group-item-action #{'active' unless params[:type]}")
+          = link_to('Done', user_notifications_path(type: 'done'),
+                            class: "list-group-item list-group-item-action #{'active' if params[:type] == 'done'}")
         .row.list-group-flush.mt-5
           %h5.ml-3 Filter
-          = link_to('Reviews', user_notifications_path(type: 'reviews'), class: 'list-group-item list-group-item-action')
-          = link_to('Comments', user_notifications_path(type: 'comments'), class: 'list-group-item list-group-item-action')
-          = link_to('State Changes', user_notifications_path(type: 'state_changes'), class: 'list-group-item list-group-item-action')
+          = link_to('Reviews', user_notifications_path(type: 'reviews'),
+                               class: "list-group-item list-group-item-action #{'active' if params[:type] == 'reviews'}")
+          = link_to('Comments', user_notifications_path(type: 'comments'),
+                                class: "list-group-item list-group-item-action #{'active' if params[:type] == 'comments'}")
+          = link_to('State Changes', user_notifications_path(type: 'state_changes'),
+                                     class: "list-group-item list-group-item-action #{'active' if params[:type] == 'state_changes'}")
 
   .col-md-8.col-lg-9#notifications-list
     .card
