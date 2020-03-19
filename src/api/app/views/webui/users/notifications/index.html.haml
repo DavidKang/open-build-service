@@ -1,6 +1,6 @@
 .row
-  .col-12.col-md-4.col-lg-3#notifications-filter-desktop
-    .card
+  .col-md-4.col-lg-3#notifications-filter-desktop
+    .card.mb-3
       .card-body
         .row.list-group-flush
           = link_to('Inbox', user_notifications_path, class: 'list-group-item list-group-item-action')
@@ -10,33 +10,21 @@
           = link_to('Reviews', user_notifications_path(type: 'reviews'), class: 'list-group-item list-group-item-action')
           = link_to('Comments', user_notifications_path(type: 'comments'), class: 'list-group-item list-group-item-action')
           = link_to('State Changes', user_notifications_path(type: 'state_changes'), class: 'list-group-item list-group-item-action')
-        .row.list-group-flush.mt-5
-          %h5.ml-3 Projects
-        .row.list-group-flush.mt-5
-          %h5.ml-3 Packages
 
-  .col-12.col-md-8.col-lg-9#notifications-list
+  .col-md-8.col-lg-9#notifications-list
     .card
       = form_with(url: set_done_user_notifications_path, method: 'post') do
         .card-body
-          .row.mb-3
+          .mb-3
             = submit_tag('Done')
-          .row
-            - @notifications.each do |n|
-              - notification = NotificationPresenter.new(n)
-              .list-group.w-100
-                .list-group-item
-                  .row
-                    .col-lg-1
-                      = check_box_tag('notification_ids[]', n.id)
-                    .col-lg-7
-                      .row
-                        = link_to(n.title, notification.link_to_notification_target)
-                      .row
-                        %p
-                    .col-lg-2
-                      %span.badge.badge-secondary
-                        #{notification.notification_batch}
-                    .col-lg-2
-                      %small.text-muted
-                        3 days ago
+          - @notifications.each do |n|
+            - notification = NotificationPresenter.new(n)
+            .d-flex.flex-column
+              .notification-item.d-flex.flex-nowrap.px-3.py-3.border-bottom
+                .d-flex.align-items-start
+                  = check_box_tag('notification_ids[]', n.id, nil, class: 'mt-1 mr-2')
+                .d-flex.flex-column.flex-sm-row.flex-fill
+                  = link_to(n.title, notification.link_to_notification_target, class: 'order-1 order-sm-0')
+                  .text-nowrap.ml-sm-auto.order-0.order-sm-1
+                    %span.badge.badge-secondary #{notification.notification_batch}
+                    %small.text-muted #{time_ago_in_words(notification.created_at)}
