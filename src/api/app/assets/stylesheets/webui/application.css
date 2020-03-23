@@ -35,7 +35,7 @@
  *= require webui/application/flash.css
  *= require webui/application/box-extensions.css
  *= require webui/application/utils.css
- *= require webui/application/datatables.scss
- *= require webui/application/announcements.scss
- *= require webui/application/interconnect.scss
+ *= require webui/application/datatables.css
+ *= require webui/application/announcements.css
+ *= require webui/application/interconnect.css
 */
