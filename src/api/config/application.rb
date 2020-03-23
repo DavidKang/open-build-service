@@ -90,6 +90,10 @@ module OBSApi
     # avoid a warning
     I18n.enforce_available_locales = true
 
+    config.assets.configure do |env|
+      env.export_concurrent = false
+    end
+
     # we're not threadsafe
     config.allow_concurrency = false
 
