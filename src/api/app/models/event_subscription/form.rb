@@ -1,5 +1,7 @@
 class EventSubscription
   class Form
+    CHANNELS = [:email, :web, :rss].freeze
+
     attr_reader :subscriber
 
     def initialize(subscriber = nil)
@@ -16,7 +18,7 @@ class EventSubscription
           subscription_params[:eventtype],
           subscription_params[:receiver_role]
         )
-        subscription.channel = subscription_params[:channel] || 'disabled'
+        subscription[subscription_params[:channel]] = subscription_params[:enable].present?
         subscription.save!
       end
     end

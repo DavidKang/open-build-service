@@ -4,14 +4,19 @@
     .card-body
       %h5.card-title= event_class.description
       %p.card-text= Event::Base::EXPLANATION_FOR_NOTIFICATIONS[event_class.to_s]
-      .form-inline
+      .list-group
         - subscriptions.each do |subscription|
-          = fields_for "subscriptions[#{i}]", subscription do |f|
-            .form-group.custom-control.custom-checkbox.mr-3
-              = check_box_tag "subscriptions[#{i}][channel]", EventSubscription.channels.keys[1],
-                EventSubscription.channels.keys[0] != subscription.channel, class: 'custom-control-input',
-                data: { url: path, method: :put, remote: true,
-                params: "subscriptions[#{i}][eventtype]=#{subscription.eventtype}&subscriptions[#{i}][receiver_role]=#{subscription.receiver_role}" }
-              = f.label :channel, EventSubscription::RECEIVER_ROLE_TEXTS[subscription.receiver_role], class: 'custom-control-label'
-              %i.fas.fa-spinner.invisible
-            - i += 1
+          .d-flex.flex-column.flex-sm-row.justify-content-sm-between.list-group-item.list-group-item-action
+            %span= EventSubscription::RECEIVER_ROLE_TEXTS[subscription.receiver_role]
+            .d-flex.flex-column.flex-sm-row{ class: "#{subscription.receiver_role}" }
+              - EventSubscription::Form::CHANNELS.each do |channel|
+                .d-flex.flex-nowrap.align-items-baseline.custom-control.custom-checkbox.my-2.my-sm-0.pr-2
+                  = check_box_tag "subscriptions[#{channel}_#{i}][enable]", true, subscription[channel],
+                                  class: 'custom-control-input',
+                                  data: { url: path, method: :put, remote: true,
+                                  params: "subscriptions[#{channel}_#{i}][eventtype]=#{subscription.eventtype}&subscriptions[#{channel}_#{i}][receiver_role]=#{subscription.receiver_role}&subscriptions[#{channel}_#{i}][channel]=#{channel}" }
+
+                  %label.custom-control-label{ for: "subscriptions_#{channel}_#{i}_enable" }= channel
+                  %i.fas.fa-spinner.invisible
+                  - i += 1
+
