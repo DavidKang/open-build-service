@@ -3,15 +3,12 @@ class SendEventEmailsJob < ApplicationJob
 
   def perform
     Event::Base.where(mails_sent: false).order(created_at: :asc).limit(1000).each do |event|
-      subscribers = event.subscribers
+      email_subscribers = event.subscribers_for_channel(:instant_email)
+      event.update_attributes(mails_sent: true) if email_subscribers.empty?
 
-      if subscribers.empty?
-        event.update_attributes(mails_sent: true)
-        next
-      end
-
-      NotificationCreator.new(event).call
-      send_email(subscribers, event)
+      NotificationCreator.new(event, :web).call
+      NotificationCreator.new(event, :rss).call
+      send_email(email_subscribers, event)
     end
     true
   end
@@ -19,6 +16,7 @@ class SendEventEmailsJob < ApplicationJob
   private
 
   def send_email(subscribers, event)
+    return if subscribers.empty?
     EventMailer.event(subscribers, event).deliver_now
   rescue StandardError => e
     Airbrake.notify(e, event_id: event.id)

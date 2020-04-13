@@ -197,6 +197,10 @@ module Event
       subscriptions.map(&:subscriber)
     end
 
+    def subscribers_for_channel(channel)
+      subscriptions(channel).map(&:subscriber)
+    end
+
     # to calculate expensive things we don't want to store in database (i.e. diffs)
     def expanded_payload
       payload
