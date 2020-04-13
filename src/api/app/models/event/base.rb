@@ -189,8 +189,8 @@ module Event
       ret
     end
 
-    def subscriptions
-      EventSubscription::FindForEvent.new(self).subscriptions
+    def subscriptions(channel = nil)
+      EventSubscription::FindForEvent.new(self).subscriptions(channel)
     end
 
     def subscribers

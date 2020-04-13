@@ -6,7 +6,7 @@ class EventSubscription
       @event = event
     end
 
-    def subscriptions
+    def subscriptions(channel = nil)
       receivers_and_subscriptions = {}
 
       event.class.receiver_roles.flat_map do |receiver_role|
@@ -23,7 +23,9 @@ class EventSubscription
           next if receivers_and_subscriptions[receiver].present? || receiver == event.originator
 
           # Try to find the subscription for this receiver
-          receiver_subscription = EventSubscription.for_subscriber(receiver).find_by(eventtype: event.eventtype, receiver_role: receiver_role)
+          options = { eventtype: event.eventtype, receiver_role: receiver_role }
+          options.merge!(channel: channel) if channel
+          receiver_subscription = EventSubscription.for_subscriber(receiver).find_by(options)
 
           if receiver_subscription.present?
             # Use the receiver's subscription if it exists
