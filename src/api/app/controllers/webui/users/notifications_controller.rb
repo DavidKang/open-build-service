@@ -2,7 +2,7 @@ class Webui::Users::NotificationsController < Webui::WebuiController
   before_action :require_login
 
   def index
-    notifications_for_subscribed_user = NotificationsFinder.new.for_subscribed_user
+    notifications_for_subscribed_user = NotificationsFinder.new(Notification::WebItem.all).for_subscribed_user
 
     @notifications = NotificationsFinder.new(notifications_for_subscribed_user).for_notifiable_type(params[:type])
   end

@@ -62,6 +62,7 @@ class User < ApplicationRecord
   has_many :upload_jobs, class_name: 'Cloud::User::UploadJob', dependent: :destroy
 
   has_many :rss_feed_items, -> { order(created_at: :desc) }, class_name: 'Notification::RssFeedItem', as: :subscriber, dependent: :destroy
+  has_many :web_items, -> { order(created_at: :desc) }, class_name: 'Notification::WebItem', as: :subscriber, dependent: :destroy
   has_many :notifications, -> { order(created_at: :desc) }, as: :subscriber, dependent: :destroy
 
   has_and_belongs_to_many :announcements
@@ -812,7 +813,7 @@ class User < ApplicationRecord
   end
 
   def unread_notifications
-    NotificationsFinder.new(notifications).unread.size
+    NotificationsFinder.new(web_items).unread.size
   end
 
   def watched_project_names
