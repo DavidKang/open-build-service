@@ -29,7 +29,7 @@ class EventSubscription
       subscription = if subscriber.present? && subscriber_subscription.present?
                        subscriber_subscription
 
-                     # 2. Pick the subscriber's subscription if it exists
+                     # 2. Pick the default subscription
                      elsif default_subscription.present?
                        default_subscription
 

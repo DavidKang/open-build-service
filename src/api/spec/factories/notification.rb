@@ -51,8 +51,8 @@ FactoryBot.define do
     end
   end
 
-  factory :web_notification, parent: :notification, class: 'Notification::Web' do
-    type { 'Notification::Web' }
+  factory :web_notification, parent: :notification, class: 'Notification::WebItem' do
+    type { 'Notification::WebItem' }
 
     trait :old do
       after(:create) do |notification, _evaluator|

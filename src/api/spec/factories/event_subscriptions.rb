@@ -27,6 +27,12 @@ FactoryBot.define do
       user
     end
 
+    factory :event_subscription_comment_for_request_without_subscriber do
+      eventtype { 'Event::CommentForRequest' }
+      receiver_role { 'commenter' }
+      channel { :instant_email }
+    end
+
     factory :event_subscription_request_created do
       eventtype { 'Event::RequestCreate' }
       receiver_role { 'target_maintainer' }
