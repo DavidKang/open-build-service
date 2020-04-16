@@ -50,4 +50,15 @@ FactoryBot.define do
       end
     end
   end
+
+  factory :web_notification, parent: :notification, class: 'Notification::Web' do
+    type { 'Notification::Web' }
+
+    trait :old do
+      after(:create) do |notification, _evaluator|
+        notification.created_at = 6.months.ago
+        notification.save
+      end
+    end
+  end
 end
