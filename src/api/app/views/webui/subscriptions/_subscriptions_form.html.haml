@@ -12,7 +12,9 @@
               - role.channels.each do |channel|
                 .d-flex.flex-nowrap.align-items-baseline.custom-control.custom-checkbox.my-2.my-sm-0.pr-2
                   = fields_for "subscriptions[#{i}]", channel.subscription do |_f|
-                    = check_box_tag "subscriptions[#{i}][enable]", true, channel.enabled?, class: 'custom-control-input',
+                    = check_box_tag "subscriptions[#{i}][enable]", true, channel.enabled?,
+                                    disabled: channel.disabled_checkbox?,
+                                    class: 'custom-control-input',
                                     data: { url: path, method: :put, remote: true, params: channel.subscription_params(i) }
                     %label.custom-control-label{ for: "subscriptions_#{i}_enable" }= channel.name.gsub('instant_', '')
                     %i.fas.fa-spinner.invisible

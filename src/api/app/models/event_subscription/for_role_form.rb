@@ -43,7 +43,7 @@ class EventSubscription
                        )
                      end
 
-      EventSubscription::ForChannelForm.new(channel, subscription)
+      EventSubscription::ForChannelForm.new(channel, subscription, event_class)
     end
 
     def find_subscription_for_subscriber(event_class, role, channel)
