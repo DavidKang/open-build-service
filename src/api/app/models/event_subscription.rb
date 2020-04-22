@@ -65,7 +65,7 @@ class EventSubscription < ApplicationRecord
   end
 
   def enabled?
-    !disabled?
+    email || web || rss
   end
 
   def parameters_for_notification
