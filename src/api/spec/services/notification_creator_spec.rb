@@ -5,8 +5,8 @@ RSpec.describe NotificationCreator do
   let(:user_kim) { create(:confirmed_user, login: 'kim') }
   let(:commenter) { create(:confirmed_user, login: 'ann') }
 
-  let!(:bob_subscription) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: user_bob) }
-  let!(:kim_subscription) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: user_kim) }
+  let!(:bob_subscription) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: user_bob, channel: :rss) }
+  let!(:kim_subscription) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: user_kim, channel: :rss) }
 
   let(:project) { create(:project, name: 'bobkim_project') }
   let!(:relationship_bob) { create(:relationship_project_user, user: user_bob, project: project) }
