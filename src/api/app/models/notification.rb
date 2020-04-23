@@ -4,6 +4,9 @@ class Notification < ApplicationRecord
 
   serialize :event_payload, JSON
 
+  scope :for_web, -> { where(web: true) }
+  scope :for_rss, -> { where(rss: true) }
+
   def event
     @event ||= event_type.constantize.new(event_payload)
   end

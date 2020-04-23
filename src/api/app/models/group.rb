@@ -13,8 +13,17 @@ class Group < ApplicationRecord
   has_many :event_subscriptions, dependent: :destroy, inverse_of: :group
   has_many :reviews, dependent: :nullify
 
+  # TODO: Remove with Notification::RssFeedItem
   has_many :rss_feed_items, -> { order(created_at: :desc) }, class_name: 'Notification::RssFeedItem', as: :subscriber, dependent: :destroy
-  has_many :notifications, -> { order(created_at: :desc) }, as: :subscriber, dependent: :destroy
+  has_many :notifications, -> { order(created_at: :desc) }, as: :subscriber, dependent: :destroy do
+    def rss_feed_items
+      where(rss: true)
+    end
+
+    def web_item
+      where(web: true)
+    end
+  end
 
   validates :title,
             format: { with: %r{\A[\w\.\-]*\z},
