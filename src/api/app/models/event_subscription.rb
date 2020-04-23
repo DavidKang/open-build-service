@@ -66,10 +66,6 @@ class EventSubscription < ApplicationRecord
     self[:receiver_role].to_sym
   end
 
-  def enabled?
-    !disabled?
-  end
-
   def parameters_for_notification
     { subscriber: subscriber,
       subscription_receiver_role: receiver_role }
