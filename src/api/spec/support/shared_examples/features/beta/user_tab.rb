@@ -14,9 +14,28 @@ RSpec.shared_examples 'user tab' do
     # Thus we have to remove bootstraps custom-control classes.
     page.execute_script("$('##{html_id}').removeClass('custom-control-input')")
     page.execute_script("$('label[for=#{html_id}]').removeClass('custom-control-label')")
+    scroll_page(html_id) if mobile?
     find_field(html_id).click
     # FIXME: Needed to wait for the Ajax call to perform
     sleep(1)
+  end
+
+  def uncollapse_datatable_row(html_id, text)
+    # Workaround: When Capybara clicks on a td element with a plus sign ('+') to uncollapse a row,
+    # this element gets changed to a minus sign ('-'), Capybara marks it as obsolete, and then
+    # clicks the link next to the sign, going to an undesidered page.
+    # To avoid this behaviour, the href attribute of the link is removed, so Capybara can not click
+    # in the link.
+    page.execute_script("$('##{html_id}').parents('td').prev().find('a').removeAttr('href')")
+    find('td', text: "#{text}").click
+    scroll_page(html_id)
+  end
+
+  def scroll_page(html_id)
+    # Workaround: To click on elements for mobile, we need first to scroll
+    # the page to make the element visible in the viewport.
+    navbar_height = 80
+    page.execute_script("window.scrollTo(0, $('##{html_id}').offset().top - #{navbar_height})")
   end
 
   describe 'user roles' do
@@ -48,6 +67,8 @@ RSpec.shared_examples 'user tab' do
       expect(find_field('user_reviewer_user_tab_user', visible: false)).not_to be_checked
       expect(find_field('user_downloader_user_tab_user', visible: false)).not_to be_checked
       expect(find_field('user_reader_user_tab_user', visible: false)).not_to be_checked
+
+      uncollapse_datatable_row('user_maintainer_user_tab_user', user_tab_user) if mobile?
       expect(page).to have_selector("a.remove-user[data-object='user_tab_user']")
     end
 
@@ -97,7 +118,14 @@ RSpec.shared_examples 'user tab' do
     end
 
     scenario 'Remove user from package / project' do
-      find('td', text: "#{reader.realname} (reader_user)").ancestor('tr').find('.remove-user').click
+      if mobile?
+        uncollapse_datatable_row('user_maintainer_reader_user', reader)
+        # Datatables adds a new tr when the row is uncollapsed. In this case there is
+        # only one remove-user element.
+        find('.remove-user').click
+      else
+        find('td', text: "#{reader.realname} (reader_user)").ancestor('tr').find('.remove-user').click
+      end
       sleep 1 # FIXME: Needed to avoid a flickering test because the animation of the modal is sometimes faster than capybara
       click_button('Delete')
 
@@ -147,6 +175,8 @@ RSpec.shared_examples 'user tab' do
       expect(find_field('group_reviewer_existing_group', visible: false)).not_to be_checked
       expect(find_field('group_downloader_existing_group', visible: false)).not_to be_checked
       expect(find_field('group_reader_existing_group', visible: false)).not_to be_checked
+
+      uncollapse_datatable_row('group_maintainer_existing_group', group) if mobile?
       expect(page).to have_selector("a.remove-group[data-object='existing_group']")
     end
 
