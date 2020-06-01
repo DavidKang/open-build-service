@@ -28,38 +28,41 @@ XmlResult: about
 
 == Announcements
 
+WARNING: Announcements will be deprecated soon. Please use Status Message endpoints
+ with 'announcement' severity instead.
+
 GET /announcements
 
   Get a list of all announcements.
 
-XmlResult: announcements
+XmlResult: status_messages
 
 POST /announcements
 
   Create an announcement.
 
 XmlBody: new_announcement
-XmlResult: announcement
+XmlResult: status_message
 
 GET /announcements/<id>
 
   Get a specific announcement.
 
-XmlResult: announcement
+XmlResult: status_message
 
 PUT /announcements/<id>
 
   Update an announcement.
 
 XmlBody: new_announcement
-XmlResult: status
+XmlResult: status_message
 
 DELETE /announcements/<id>
 
   Delete an announcement.
 
 XmlBody: none
-XmlResult: status
+XmlResult: status_message
 
 == Architectures
 
