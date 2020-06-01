@@ -3,12 +3,12 @@ class StatusMessagesController < ApplicationController
   before_action :set_status_message, except: [:index, :create]
 
   def index
-    @messages = StatusMessage.alive.limit(params[:limit]).order('created_at DESC').includes(:user)
-    @count = @messages.size
+    @status_messages = StatusMessage.alive.limit(params[:limit]).order('created_at DESC').includes(:user)
+    @count = @status_messages.size
   end
 
   def show
-    @message = StatusMessage.find(params[:id])
+    @status_message = StatusMessage.find(params[:id])
   end
 
   def create
