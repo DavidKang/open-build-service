@@ -69,3 +69,4 @@ Breaking API changes:
 =====================
 
  * Status messages endpoints. Check the API documentation for the new format.
+ * Announcement outputs have changed. Check the API documentation for the new format.
