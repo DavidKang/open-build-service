@@ -9,26 +9,20 @@ module Webui
         authorize @package, :update?
       end
 
-      def create
+      def update
         authorize @package, :update?
 
-        file = params[:file]
-        file_url = params[:file_url]
-        filename = params[:filename]
+        update_file = FilesManager::UpdateFile.new(@package, params[:filename], params[:file], params[:comment]).call
+        if update_file.valid?
+          flash.now[:success] = "The file '#{params[:filename]}' has been successfully saved."
+          status = 200
+        else
+          flash.now[:error] = "Error while saving '#{params[:filename]}' file: #{update_file.errors.compact.join("\n")}."
+          status = 400
+        end
 
-        errors = []
-
-        begin
-          if file.present?
-            # We are getting an uploaded file
-            filename = file.original_filename if filename.blank?
-            @package.save_file(file: file, filename: filename, comment: params[:comment])
-          elsif file_url.present?
-            # we have a remote file URI, so we have to download and save it
-            services = @package.services
-
-            # detects automatically git://, src.rpm formats
-            services.addDownloadURL(file_url, filename)
+        render layout: false, status: status, partial: 'layouts/webui/flash', object: flash
+      end
 
             unless services.save
               errors << "Failed to add file from URL '#{file_url}'"

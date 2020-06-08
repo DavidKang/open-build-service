@@ -117,4 +117,32 @@ RSpec.describe Webui::Packages::FilesController, vcr: true do
       include_examples 'tests for create action'
     end
   end
+
+  describe 'PUT #update' do
+    let(:package_with_file) { create(:package_with_file, name: 'package_with_files', project: source_project) }
+
+
+    context 'with valid content' do
+      before do
+        put :update, params: { project_name: source_project, package_name: package_with_file, filename: 'somefile.txt',
+                               file: 'fake content' },
+                     xhr: true
+      end
+
+      it { expect(response).to have_http_status(200) }
+      it { expect(flash[:success]).to eq("The file 'somefile.txt' has been successfully saved.") }
+    end
+
+    context 'with an exception' do
+      before do
+        allow_any_instance_of(Package).to receive(:save_file).and_raise(StandardError, 'fake error')
+        put :update, params: { project_name: source_project, package_name: package_with_file, filename: 'somefile.txt',
+                               file: 'fake content' },
+                     xhr: true
+      end
+
+      it { expect(response).to have_http_status(400) }
+      it { expect(flash[:error]).to eq("Error while saving 'somefile.txt' file: fake error.") }
+    end
+  end
 end

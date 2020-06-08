@@ -1,0 +1,410 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://backend:5352/source/home:tom/_meta?user=tom
+    body:
+      encoding: UTF-8
+      string: |
+        <project name="home:tom">
+          <title/>
+          <description/>
+          <person userid="tom" role="maintainer"/>
+        </project>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '128'
+    body:
+      encoding: UTF-8
+      string: |
+        <project name="home:tom">
+          <title></title>
+          <description></description>
+          <person userid="tom" role="maintainer"/>
+        </project>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: put
+    uri: http://backend:5352/source/home:tom/package_with_files/_meta?user=tom
+    body:
+      encoding: UTF-8
+      string: |
+        <package name="package_with_files" project="home:tom">
+          <title>Those Barren Leaves, Thrones, Dominations</title>
+          <description>Earum sequi atque est.</description>
+        </package>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '177'
+    body:
+      encoding: UTF-8
+      string: |
+        <package name="package_with_files" project="home:tom">
+          <title>Those Barren Leaves, Thrones, Dominations</title>
+          <description>Earum sequi atque est.</description>
+        </package>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: put
+    uri: http://backend:5352/source/home:tom/package_with_files/_config
+    body:
+      encoding: UTF-8
+      string: Aliquid et est. Minus nihil rerum. Odit est expedita.
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '211'
+    body:
+      encoding: UTF-8
+      string: |
+        <revision rev="131" vrev="131">
+          <srcmd5>b8e1b534a68b12e2abe319fb03afc4ca</srcmd5>
+          <version>unknown</version>
+          <time>1591711091</time>
+          <user>unknown</user>
+          <comment></comment>
+          <requestid/>
+        </revision>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: put
+    uri: http://backend:5352/source/home:tom/package_with_files/somefile.txt
+    body:
+      encoding: UTF-8
+      string: Error animi laudantium. Autem sed tempore. Aut deserunt ea.
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '211'
+    body:
+      encoding: UTF-8
+      string: |
+        <revision rev="132" vrev="132">
+          <srcmd5>1ae45737066e192d404d3d541add4485</srcmd5>
+          <version>unknown</version>
+          <time>1591711091</time>
+          <user>unknown</user>
+          <comment></comment>
+          <requestid/>
+        </revision>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: get
+    uri: http://backend:5352/source/home:tom/package_with_files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '406'
+    body:
+      encoding: UTF-8
+      string: |
+        <directory name="package_with_files" rev="132" vrev="132" srcmd5="1ae45737066e192d404d3d541add4485">
+          <entry name="_config" md5="5ae1f8c0b140b347263a006f4b7555b6" size="53" mtime="1591711091"/>
+          <entry name="fake+content" md5="ff4efcf56961b4efb4ba75bdad8a69cd" size="12" mtime="1591691572"/>
+          <entry name="somefile.txt" md5="b59ca365dd28e9102d20b8dd82c71b28" size="59" mtime="1591711091"/>
+        </directory>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: put
+    uri: http://backend:5352/source/home:tom/package_with_files/somefile.txt?user=tom
+    body:
+      encoding: UTF-8
+      string: fake content
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '207'
+    body:
+      encoding: UTF-8
+      string: |
+        <revision rev="133" vrev="133">
+          <srcmd5>b8e1b534a68b12e2abe319fb03afc4ca</srcmd5>
+          <version>unknown</version>
+          <time>1591711091</time>
+          <user>tom</user>
+          <comment></comment>
+          <requestid/>
+        </revision>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: put
+    uri: http://backend:5352/source/home:tom/package_with_files/_meta?user=tom
+    body:
+      encoding: UTF-8
+      string: |
+        <package name="package_with_files" project="home:tom">
+          <title>Those Barren Leaves, Thrones, Dominations</title>
+          <description>Earum sequi atque est.</description>
+        </package>
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '177'
+    body:
+      encoding: UTF-8
+      string: |
+        <package name="package_with_files" project="home:tom">
+          <title>Those Barren Leaves, Thrones, Dominations</title>
+          <description>Earum sequi atque est.</description>
+        </package>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: get
+    uri: http://backend:5352/source/home:tom/package_with_files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '406'
+    body:
+      encoding: UTF-8
+      string: |
+        <directory name="package_with_files" rev="133" vrev="133" srcmd5="b8e1b534a68b12e2abe319fb03afc4ca">
+          <entry name="_config" md5="5ae1f8c0b140b347263a006f4b7555b6" size="53" mtime="1591711091"/>
+          <entry name="fake+content" md5="ff4efcf56961b4efb4ba75bdad8a69cd" size="12" mtime="1591691572"/>
+          <entry name="somefile.txt" md5="3d8b639a5cd4967496a67a327719b7ae" size="12" mtime="1591705923"/>
+        </directory>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: get
+    uri: http://backend:5352/source/home:tom/package_with_files?view=info
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '240'
+    body:
+      encoding: UTF-8
+      string: |
+        <sourceinfo package="package_with_files" rev="133" vrev="133" srcmd5="b8e1b534a68b12e2abe319fb03afc4ca" verifymd5="b8e1b534a68b12e2abe319fb03afc4ca">
+          <error>bad build configuration, no build type defined or detected</error>
+        </sourceinfo>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: get
+    uri: http://backend:5352/source/home:tom/package_with_files
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '406'
+    body:
+      encoding: UTF-8
+      string: |
+        <directory name="package_with_files" rev="133" vrev="133" srcmd5="b8e1b534a68b12e2abe319fb03afc4ca">
+          <entry name="_config" md5="5ae1f8c0b140b347263a006f4b7555b6" size="53" mtime="1591711091"/>
+          <entry name="fake+content" md5="ff4efcf56961b4efb4ba75bdad8a69cd" size="12" mtime="1591691572"/>
+          <entry name="somefile.txt" md5="3d8b639a5cd4967496a67a327719b7ae" size="12" mtime="1591705923"/>
+        </directory>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+- request:
+    method: post
+    uri: http://backend:5352/source/home:tom/package_with_files?cmd=diff&linkrev=base&onlyissues=1&orev=0&view=xml
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - text/xml
+      Cache-Control:
+      - no-cache
+      Connection:
+      - close
+      Content-Length:
+      - '316'
+    body:
+      encoding: UTF-8
+      string: |
+        <sourcediff key="3b4f2733e929a2d8a85dcb0563b9e6fd">
+          <old project="home:tom" package="package_with_files" rev="0" srcmd5="d41d8cd98f00b204e9800998ecf8427e"/>
+          <new project="home:tom" package="package_with_files" rev="133" srcmd5="b8e1b534a68b12e2abe319fb03afc4ca"/>
+          <files/>
+          <issues>
+          </issues>
+        </sourcediff>
+  recorded_at: Tue, 09 Jun 2020 13:58:11 GMT
+recorded_with: VCR 6.0.0
