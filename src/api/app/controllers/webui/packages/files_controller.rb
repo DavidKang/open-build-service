@@ -24,45 +24,17 @@ module Webui
         render layout: false, status: status, partial: 'layouts/webui/flash', object: flash
       end
 
-            unless services.save
-              errors << "Failed to add file from URL '#{file_url}'"
-            end
-          elsif filename.present? # No file is provided so we just create an empty new file (touch)
-            @package.save_file(filename: filename)
-          else
-            errors << 'No file or URI given'
-          end
-        rescue APIError => e
-          errors << e.message
-        rescue Backend::Error => e
-          errors << Xmlhash::XMLHash.new(error: e.summary)[:error]
-        rescue StandardError => e
-          errors << e.message
-        end
+      def create
+        authorize @package, :update?
 
-        if errors.empty?
-          message = "The file '#{filename}' has been successfully saved."
-          # We have to check if it's an AJAX request or not
-          if request.xhr?
-            flash.now[:success] = message
-          else
-            redirect_to(package_show_path(project: @project, package: @package), success: message)
-            return
-          end
+        upload_file = FilesManager::UploadFiles.new(@package, params[:filename], params[:file], params[:file_url], params[:comment]).call
+        if upload_file.valid?
+          flash[:success] = "The file '#{params[:filename]}' has been successfully uploaded."
         else
-          message = "Error while creating '#{filename}' file: #{errors.compact.join("\n")}."
-          # We have to check if it's an AJAX request or not
-          if request.xhr?
-            flash.now[:error] = message
-            status = 400
-          else
-            redirect_back(fallback_location: root_path, error: message)
-            return
-          end
+          flash[:error] = "Error while creating '#{params[:filename]}' file: #{upload_file.errors.join("\n")}."
         end
 
-        status ||= 200
-        render layout: false, status: status, partial: 'layouts/webui/flash', object: flash
+        redirect_to package_show_path(project: @project, package: @package)
       end
     end
   end

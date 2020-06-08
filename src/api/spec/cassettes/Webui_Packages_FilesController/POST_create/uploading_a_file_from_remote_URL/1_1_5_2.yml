@@ -39,7 +39,7 @@ http_interactions:
           <description></description>
           <person userid="tom" role="maintainer"/>
         </project>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -47,8 +47,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>In Death Ground</title>
-          <description>Aut sed deserunt qui.</description>
+          <title>All the King's Men</title>
+          <description>Et repellendus assumenda ducimus.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -69,15 +69,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '142'
+      - '157'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>In Death Ground</title>
-          <description>Aut sed deserunt qui.</description>
+          <title>All the King's Men</title>
+          <description>Et repellendus assumenda ducimus.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -103,13 +103,12 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '85'
+      - '202'
     body:
-      encoding: UTF-8
-      string: |
-        <directory name="my_package" srcmd5="d41d8cd98f00b204e9800998ecf8427e">
-        </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PGRpcmVjdG9yeSBuYW1lPSJteV9wYWNrYWdlIiByZXY9IjMiIHZyZXY9IjMiIHNyY21kNT0iZjQyNzMzY2Q3OWU1ZGVlZGQyOGQwOTg5MTYxMTVmMmUiPgogIDxlbnRyeSBuYW1lPSLlrabkuaDmgLvnu5MiIG1kNT0iNmJhMTY3ZDcyZTljYzYwMTA4YTc1NjdjZGFlYzcyMGYiIHNpemU9Ijk3NyIgbXRpbWU9IjE1OTEzNDY4ODkiLz4KPC9kaXJlY3Rvcnk+Cg==
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package/_service
@@ -143,7 +142,7 @@ http_interactions:
           <summary>_service: no such file</summary>
           <details>404 _service: no such file</details>
         </status>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_service?comment=Modified%20via%20webui&user=tom
@@ -181,15 +180,15 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <revision rev="1" vrev="1">
-          <srcmd5>c456f53ebda981137ed6b286301fb5b6</srcmd5>
+        <revision rev="4" vrev="4">
+          <srcmd5>3ff36844bfafdb2a695a8dd27b3f3dc9</srcmd5>
           <version>unknown</version>
-          <time>1591347082</time>
+          <time>1591704170</time>
           <user>tom</user>
           <comment>Modified via webui</comment>
           <requestid/>
         </revision>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: post
     uri: http://backend:5352/source/home:tom/my_package?cmd=runservice&user=tom
@@ -223,7 +222,7 @@ http_interactions:
       string: '<status code="ok" />
 
 '
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -231,8 +230,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>In Death Ground</title>
-          <description>Aut sed deserunt qui.</description>
+          <title>All the King's Men</title>
+          <description>Et repellendus assumenda ducimus.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -253,15 +252,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '142'
+      - '157'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>In Death Ground</title>
-          <description>Aut sed deserunt qui.</description>
+          <title>All the King's Men</title>
+          <description>Et repellendus assumenda ducimus.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -287,15 +286,12 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '230'
+      - '330'
     body:
-      encoding: UTF-8
-      string: |
-        <directory name="my_package" rev="2" vrev="2" srcmd5="91f4fd80225a035a0aca1fe6a27d3366">
-          <serviceinfo code="running"/>
-          <entry name="_service" md5="4da20bf9b9adf337a61ec7571253d7f3" size="279" mtime="1591346890"/>
-        </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PGRpcmVjdG9yeSBuYW1lPSJteV9wYWNrYWdlIiByZXY9IjUiIHZyZXY9IjUiIHNyY21kNT0iM2VhZTRkMDIzM2YyYmU4MTBmM2MxZmIyNTA2OGZhYzQiPgogIDxzZXJ2aWNlaW5mbyBjb2RlPSJydW5uaW5nIi8+CiAgPGVudHJ5IG5hbWU9Il9zZXJ2aWNlIiBtZDU9IjRkYTIwYmY5YjlhZGYzMzdhNjFlYzc1NzEyNTNkN2YzIiBzaXplPSIyNzkiIG10aW1lPSIxNTkxMzQ2ODkwIi8+CiAgPGVudHJ5IG5hbWU9IuWtpuS5oOaAu+e7kyIgbWQ1PSI2YmExNjdkNzJlOWNjNjAxMDhhNzU2N2NkYWVjNzIwZiIgc2l6ZT0iOTc3IiBtdGltZT0iMTU5MTM0Njg4OSIvPgo8L2RpcmVjdG9yeT4K
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package?view=info
@@ -325,10 +321,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <sourceinfo package="my_package" rev="2" vrev="2" srcmd5="91f4fd80225a035a0aca1fe6a27d3366">
+        <sourceinfo package="my_package" rev="5" vrev="5" srcmd5="3eae4d0233f2be810f3c1fb25068fac4">
           <error>service in progress</error>
         </sourceinfo>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -354,15 +350,12 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '230'
+      - '330'
     body:
-      encoding: UTF-8
-      string: |
-        <directory name="my_package" rev="2" vrev="2" srcmd5="91f4fd80225a035a0aca1fe6a27d3366">
-          <serviceinfo code="running"/>
-          <entry name="_service" md5="4da20bf9b9adf337a61ec7571253d7f3" size="279" mtime="1591346890"/>
-        </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PGRpcmVjdG9yeSBuYW1lPSJteV9wYWNrYWdlIiByZXY9IjUiIHZyZXY9IjUiIHNyY21kNT0iM2VhZTRkMDIzM2YyYmU4MTBmM2MxZmIyNTA2OGZhYzQiPgogIDxzZXJ2aWNlaW5mbyBjb2RlPSJydW5uaW5nIi8+CiAgPGVudHJ5IG5hbWU9Il9zZXJ2aWNlIiBtZDU9IjRkYTIwYmY5YjlhZGYzMzdhNjFlYzc1NzEyNTNkN2YzIiBzaXplPSIyNzkiIG10aW1lPSIxNTkxMzQ2ODkwIi8+CiAgPGVudHJ5IG5hbWU9IuWtpuS5oOaAu+e7kyIgbWQ1PSI2YmExNjdkNzJlOWNjNjAxMDhhNzU2N2NkYWVjNzIwZiIgc2l6ZT0iOTc3IiBtdGltZT0iMTU5MTM0Njg4OSIvPgo8L2RpcmVjdG9yeT4K
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: post
     uri: http://backend:5352/source/home:tom/my_package?cmd=diff&linkrev=base&onlyissues=1&orev=0&view=xml
@@ -394,14 +387,14 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <sourcediff key="74062b6048b305061ee42d9f78b3e104">
+        <sourcediff key="b8edfb93bc813e476e828d6baaf44f96">
           <old project="home:tom" package="my_package" rev="0" srcmd5="d41d8cd98f00b204e9800998ecf8427e"/>
-          <new project="home:tom" package="my_package" rev="2" srcmd5="91f4fd80225a035a0aca1fe6a27d3366"/>
+          <new project="home:tom" package="my_package" rev="5" srcmd5="3eae4d0233f2be810f3c1fb25068fac4"/>
           <files/>
           <issues>
           </issues>
         </sourcediff>
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 - request:
     method: delete
     uri: http://backend:5352/source/home:tom/my_package?comment&user=tom
@@ -433,5 +426,5 @@ http_interactions:
       string: '<status code="ok" />
 
 '
-  recorded_at: Fri, 05 Jun 2020 08:51:22 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:50 GMT
 recorded_with: VCR 6.0.0

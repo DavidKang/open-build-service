@@ -39,7 +39,7 @@ http_interactions:
           <description></description>
           <person userid="tom" role="maintainer"/>
         </project>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -47,8 +47,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Now Sleeps the Crimson Petal</title>
-          <description>Veniam omnis ut rem.</description>
+          <title>Vile Bodies</title>
+          <description>Voluptas harum et eos.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -69,15 +69,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '154'
+      - '139'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Now Sleeps the Crimson Petal</title>
-          <description>Veniam omnis ut rem.</description>
+          <title>Vile Bodies</title>
+          <description>Voluptas harum et eos.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -103,13 +103,14 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '85'
+      - '207'
     body:
       encoding: UTF-8
       string: |
-        <directory name="my_package" srcmd5="d41d8cd98f00b204e9800998ecf8427e">
+        <directory name="my_package" rev="2" vrev="2" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
+          <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
         </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/newly_created_file?user=tom
@@ -139,15 +140,15 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <revision rev="1" vrev="1">
+        <revision rev="3" vrev="3">
           <srcmd5>5a8503c52a494e9a5660128cbdfa43f6</srcmd5>
           <version>unknown</version>
-          <time>1591347083</time>
+          <time>1591704175</time>
           <user>tom</user>
           <comment></comment>
           <requestid/>
         </revision>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -155,8 +156,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Now Sleeps the Crimson Petal</title>
-          <description>Veniam omnis ut rem.</description>
+          <title>Vile Bodies</title>
+          <description>Voluptas harum et eos.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -177,15 +178,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '154'
+      - '139'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Now Sleeps the Crimson Petal</title>
-          <description>Veniam omnis ut rem.</description>
+          <title>Vile Bodies</title>
+          <description>Voluptas harum et eos.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -215,10 +216,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <directory name="my_package" rev="1" vrev="1" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
+        <directory name="my_package" rev="3" vrev="3" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
           <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
         </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package?view=info
@@ -248,10 +249,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <sourceinfo package="my_package" rev="1" vrev="1" srcmd5="5a8503c52a494e9a5660128cbdfa43f6" verifymd5="5a8503c52a494e9a5660128cbdfa43f6">
+        <sourceinfo package="my_package" rev="3" vrev="3" srcmd5="5a8503c52a494e9a5660128cbdfa43f6" verifymd5="5a8503c52a494e9a5660128cbdfa43f6">
           <error>bad build configuration, no build type defined or detected</error>
         </sourceinfo>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -281,10 +282,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <directory name="my_package" rev="1" vrev="1" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
+        <directory name="my_package" rev="3" vrev="3" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
           <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
         </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 - request:
     method: post
     uri: http://backend:5352/source/home:tom/my_package?cmd=diff&linkrev=base&onlyissues=1&orev=0&view=xml
@@ -316,42 +317,12 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <sourcediff key="79c8e56bd184637fc14ab115969cd7b1">
+        <sourcediff key="31b33fc43420002ad14c08c26d493c0f">
           <old project="home:tom" package="my_package" rev="0" srcmd5="d41d8cd98f00b204e9800998ecf8427e"/>
-          <new project="home:tom" package="my_package" rev="1" srcmd5="5a8503c52a494e9a5660128cbdfa43f6"/>
+          <new project="home:tom" package="my_package" rev="3" srcmd5="5a8503c52a494e9a5660128cbdfa43f6"/>
           <files/>
           <issues>
           </issues>
         </sourcediff>
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
-- request:
-    method: get
-    uri: http://backend:5352/source/home:tom/my_package/newly_created_file
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/octet-stream
-      Content-Length:
-      - '12'
-      Cache-Control:
-      - no-cache
-      Connection:
-      - close
-    body:
-      encoding: UTF-8
-      string: some_content
-  recorded_at: Fri, 05 Jun 2020 08:51:23 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:55 GMT
 recorded_with: VCR 6.0.0
