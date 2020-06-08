@@ -39,7 +39,7 @@ http_interactions:
           <description></description>
           <person userid="tom" role="maintainer"/>
         </project>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:52 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -47,8 +47,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>O Jerusalem!</title>
-          <description>Voluptate neque perferendis eius.</description>
+          <title>Paths of Glory</title>
+          <description>Est exercitationem labore eos.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -69,15 +69,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '151'
+      - '150'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>O Jerusalem!</title>
-          <description>Voluptate neque perferendis eius.</description>
+          <title>Paths of Glory</title>
+          <description>Est exercitationem labore eos.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:52 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -103,12 +103,11 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '207'
+      - '85'
     body:
       encoding: UTF-8
       string: |
-        <directory name="my_package" rev="3" vrev="3" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
-          <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
+        <directory name="my_package" srcmd5="d41d8cd98f00b204e9800998ecf8427e">
         </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:52 GMT
 recorded_with: VCR 6.0.0

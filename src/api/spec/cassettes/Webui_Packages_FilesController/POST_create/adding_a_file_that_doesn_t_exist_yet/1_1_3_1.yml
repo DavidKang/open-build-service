@@ -39,7 +39,7 @@ http_interactions:
           <description></description>
           <person userid="tom" role="maintainer"/>
         </project>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -47,8 +47,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Such, Such Were the Joys</title>
-          <description>Ea veniam quos nesciunt.</description>
+          <title>In a Glass Darkly</title>
+          <description>Non autem sequi aut.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -69,15 +69,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '154'
+      - '143'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Such, Such Were the Joys</title>
-          <description>Ea veniam quos nesciunt.</description>
+          <title>In a Glass Darkly</title>
+          <description>Non autem sequi aut.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -107,49 +107,16 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <directory name="my_package" rev="3" vrev="3" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
+        <directory name="my_package" rev="1" vrev="1" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
           <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
         </directory>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: put
-    uri: http://backend:5352/source/home:tom/my_package/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93?user=tom
+    uri: http://backend:5352/source/home:tom/my_package/newly_created_file?user=tom
     body:
       encoding: UTF-8
-      string: |+
-        ubuntu12.04 root登录
-        1先设定一个root的密码，sudo passwd root
-
-        2 root 登陆，su root
-
-        3 备份一下lightgdm
-        cp -p /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.bak
-
-        4 vi /etc/lightdm/lightdm.conf
-
-        5 增加：greeter-show-manual-login=true
-          修改后为：
-          [SeatDefaults]
-          greeter-session=unity-greeter
-          user-session=ubuntu
-          greeter-show-manual-login=true
-
-          重启登陆即可。已经可以输入root了
-
-
-        root登陆后还没声音，又查了查，如下方法:
-        Ubuntu root登录没有声音这个问题的根本原因是使用root登录后pulseaudio没有启动。
-        将root加到pulse-access组：
-        sudo usermod -a -G pulse-access root
-        然后修改配置文件/etc/default/pulseaudio，将PULSEAUDIO_SYSTEM_START设为1，
-
-        =======================================================================
-        安装linux版本的beyond compare
-        beyond compare的注册码：
-        HmB5oANygQOhaStTHNa+zOKgOeWHOkeAp6d1+QwIebz6z9kwYCm9-O0jF9F79zvzed9v5UVC4VrDkDMmTM8nB+
-
-
-
+      string: some_content
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -173,15 +140,15 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <revision rev="4" vrev="4">
-          <srcmd5>88925e87d982dfe2af8f52ec0d33a902</srcmd5>
+        <revision rev="2" vrev="2">
+          <srcmd5>5a8503c52a494e9a5660128cbdfa43f6</srcmd5>
           <version>unknown</version>
-          <time>1591347078</time>
+          <time>1591704174</time>
           <user>tom</user>
           <comment></comment>
           <requestid/>
         </revision>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: put
     uri: http://backend:5352/source/home:tom/my_package/_meta?user=tom
@@ -189,8 +156,8 @@ http_interactions:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Such, Such Were the Joys</title>
-          <description>Ea veniam quos nesciunt.</description>
+          <title>In a Glass Darkly</title>
+          <description>Non autem sequi aut.</description>
         </package>
     headers:
       Accept-Encoding:
@@ -211,15 +178,15 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '154'
+      - '143'
     body:
       encoding: UTF-8
       string: |
         <package name="my_package" project="home:tom">
-          <title>Such, Such Were the Joys</title>
-          <description>Ea veniam quos nesciunt.</description>
+          <title>In a Glass Darkly</title>
+          <description>Non autem sequi aut.</description>
         </package>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -245,12 +212,14 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '307'
+      - '207'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        PGRpcmVjdG9yeSBuYW1lPSJteV9wYWNrYWdlIiByZXY9IjQiIHZyZXY9IjQiIHNyY21kNT0iODg5MjVlODdkOTgyZGZlMmFmOGY1MmVjMGQzM2E5MDIiPgogIDxlbnRyeSBuYW1lPSJuZXdseV9jcmVhdGVkX2ZpbGUiIG1kNT0iYmFhYjZjMTZkOTE0MzUyM2I3ODY1ZDQ2ODk2ZTQ1OTYiIHNpemU9IjEyIiBtdGltZT0iMTU5MTM0Njg4OCIvPgogIDxlbnRyeSBuYW1lPSLlrabkuaDmgLvnu5MiIG1kNT0iNmJhMTY3ZDcyZTljYzYwMTA4YTc1NjdjZGFlYzcyMGYiIHNpemU9Ijk3NyIgbXRpbWU9IjE1OTEzNDY4ODkiLz4KPC9kaXJlY3Rvcnk+Cg==
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+      encoding: UTF-8
+      string: |
+        <directory name="my_package" rev="2" vrev="2" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
+          <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
+        </directory>
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package?view=info
@@ -280,10 +249,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <sourceinfo package="my_package" rev="4" vrev="4" srcmd5="88925e87d982dfe2af8f52ec0d33a902" verifymd5="88925e87d982dfe2af8f52ec0d33a902">
+        <sourceinfo package="my_package" rev="2" vrev="2" srcmd5="5a8503c52a494e9a5660128cbdfa43f6" verifymd5="5a8503c52a494e9a5660128cbdfa43f6">
           <error>bad build configuration, no build type defined or detected</error>
         </sourceinfo>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: get
     uri: http://backend:5352/source/home:tom/my_package
@@ -309,12 +278,14 @@ http_interactions:
       Connection:
       - close
       Content-Length:
-      - '307'
+      - '207'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        PGRpcmVjdG9yeSBuYW1lPSJteV9wYWNrYWdlIiByZXY9IjQiIHZyZXY9IjQiIHNyY21kNT0iODg5MjVlODdkOTgyZGZlMmFmOGY1MmVjMGQzM2E5MDIiPgogIDxlbnRyeSBuYW1lPSJuZXdseV9jcmVhdGVkX2ZpbGUiIG1kNT0iYmFhYjZjMTZkOTE0MzUyM2I3ODY1ZDQ2ODk2ZTQ1OTYiIHNpemU9IjEyIiBtdGltZT0iMTU5MTM0Njg4OCIvPgogIDxlbnRyeSBuYW1lPSLlrabkuaDmgLvnu5MiIG1kNT0iNmJhMTY3ZDcyZTljYzYwMTA4YTc1NjdjZGFlYzcyMGYiIHNpemU9Ijk3NyIgbXRpbWU9IjE1OTEzNDY4ODkiLz4KPC9kaXJlY3Rvcnk+Cg==
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+      encoding: UTF-8
+      string: |
+        <directory name="my_package" rev="2" vrev="2" srcmd5="5a8503c52a494e9a5660128cbdfa43f6">
+          <entry name="newly_created_file" md5="baab6c16d9143523b7865d46896e4596" size="12" mtime="1591346888"/>
+        </directory>
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 - request:
     method: post
     uri: http://backend:5352/source/home:tom/my_package?cmd=diff&linkrev=base&onlyissues=1&orev=0&view=xml
@@ -346,12 +317,12 @@ http_interactions:
     body:
       encoding: UTF-8
       string: |
-        <sourcediff key="50b7a13f526e18e159c8960372cd3200">
+        <sourcediff key="7e48b6bf0da48f5476513ed993db0a02">
           <old project="home:tom" package="my_package" rev="0" srcmd5="d41d8cd98f00b204e9800998ecf8427e"/>
-          <new project="home:tom" package="my_package" rev="4" srcmd5="88925e87d982dfe2af8f52ec0d33a902"/>
+          <new project="home:tom" package="my_package" rev="2" srcmd5="5a8503c52a494e9a5660128cbdfa43f6"/>
           <files/>
           <issues>
           </issues>
         </sourcediff>
-  recorded_at: Fri, 05 Jun 2020 08:51:18 GMT
+  recorded_at: Tue, 09 Jun 2020 12:02:54 GMT
 recorded_with: VCR 6.0.0
