@@ -1,9 +1,10 @@
 class FilesManager::UploadRegularFile
-  def initialize(package, file, filename, comment)
+  def initialize(package, file, filename, comment, rev = nil)
     @package = package
     @file = file
     @filename = filename
     @comment = comment
+    @rev = rev
   end
 
   def call
@@ -33,7 +34,9 @@ class FilesManager::UploadRegularFile
   def file_params
     return { file: @file, filename: @file.original_filename, comment: @comment } if @file.present? && @filename.empty?
 
-    options = { filename: @filename, comment: @comment }
+    options = { filename: @filename }
+    options.merge(comment: @comment) unless @rev
+    options.merge(rev: @rev) if @rev
     options.merge!(file: @file) if @file.present?
     options
   end
