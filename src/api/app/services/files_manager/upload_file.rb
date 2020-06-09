@@ -1,4 +1,4 @@
-class FilesManager::UploadRegularFile
+class FilesManager::UploadFile
   def initialize(package, file, filename, comment, rev = nil)
     @package = package
     @file = file
@@ -35,8 +35,8 @@ class FilesManager::UploadRegularFile
     return { file: @file, filename: @file.original_filename, comment: @comment } if @file.present? && @filename.empty?
 
     options = { filename: @filename }
-    options.merge(comment: @comment) unless @rev
-    options.merge(rev: @rev) if @rev
+    options.merge!(comment: @comment) unless @rev == 'repository'
+    options.merge!(rev: @rev) if @rev
     options.merge!(file: @file) if @file.present?
     options
   end
