@@ -1,0 +1,8 @@
+%ul.list-inline.d-flex.flex-row-reverse.avatars.m-0
+  - if notification.notifiable_type == 'Comment'
+    %li.list-inline-item
+      = user_avatar(notification.notifiable.user)
+  - elsif notification.notifiable_type == 'BsRequest'
+    - request_tags(notification.notifiable).each do |request_tag|
+      %li.list-inline-item
+        = request_tag

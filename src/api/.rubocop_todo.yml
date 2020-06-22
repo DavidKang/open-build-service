@@ -285,6 +285,7 @@ Metrics/ModuleLength:
   Exclude:
     - 'app/helpers/flag_helper.rb'
     - 'app/helpers/maintenance_helper.rb'
+    - 'app/helpers/webui/notification_helper.rb'
     - 'app/helpers/webui/request_helper.rb'
     - 'app/mixins/has_attributes.rb'
     - 'app/mixins/has_relationships.rb'
