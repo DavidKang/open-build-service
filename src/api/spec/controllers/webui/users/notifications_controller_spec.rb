@@ -6,7 +6,6 @@ RSpec.describe Webui::Users::NotificationsController do
   let!(:other_user) { create(:confirmed_user) }
   let(:state_change_notification) { create(:web_notification, :request_state_change, subscriber: user) }
   let(:creation_notification) { create(:web_notification, :request_created, subscriber: user) }
-  let(:review_notification) { create(:web_notification, :review_wanted, subscriber: user) }
   let(:comment_for_project_notification) { create(:web_notification, :comment_for_project, subscriber: user) }
   let(:comment_for_package_notification) { create(:web_notification, :comment_for_package, subscriber: user) }
   let(:comment_for_request_notification) { create(:web_notification, :comment_for_request, subscriber: user) }
@@ -39,7 +38,6 @@ RSpec.describe Webui::Users::NotificationsController do
       it 'assigns notifications with all notifications' do
         expect(assigns[:notifications]).to include(state_change_notification,
                                                    creation_notification,
-                                                   review_notification,
                                                    comment_for_project_notification,
                                                    comment_for_package_notification,
                                                    comment_for_request_notification)
@@ -57,16 +55,6 @@ RSpec.describe Webui::Users::NotificationsController do
 
       it 'sets @notifications to all delivered notifications regardless of type' do
         expect(assigns[:notifications]).to include(read_notification)
-      end
-    end
-
-    context "when param type is 'reviews'" do
-      let(:params) { default_params.merge(type: 'reviews') }
-
-      it_behaves_like 'returning success'
-
-      it "sets @notifications to all undelivered notifications of 'review' type" do
-        expect(assigns[:notifications]).to include(review_notification)
       end
     end
 

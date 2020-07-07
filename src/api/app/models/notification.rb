@@ -10,6 +10,8 @@ class Notification < ApplicationRecord
 
   serialize :event_payload, JSON
 
+  # TODO: drop as soon as review notifications disappear.
+  scope :without_reviews, -> { where.not(notifiable_type: 'Review') }
   scope :for_web, -> { where(web: true) }
   scope :for_rss, -> { where(rss: true) }
 
