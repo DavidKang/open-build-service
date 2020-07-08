@@ -22,12 +22,13 @@
               = notification_icon(n.notifiable_type)
               = notification_link(notification)
               = request_state(notification)
-            .actions.ml-auto.align-self-start
+            .actions.ml-auto.align-self-end.align-self-md-start
               = read_unread_link(notification)
-            - if notification.kind_of_request
-              %p.kind.text-word-break-all.m-0= notification.kind_of_request
-            %small.excerpt.text-muted.d-none.d-md-block.m-0= notification.excerpt
-            %small.who-when.text-muted.d-block.text-right.d-flex.justify-content-end.align-items-center
+            .content
+              - if notification.kind_of_request
+                %p.kind.text-word-break-all.m-0.mb-2= notification.kind_of_request
+              %p.excerpt.d-none.d-md-block= notification.excerpt
+            %small.who-when.d-flex.align-self-center.align-self-md-start.justify-content-start.justify-content-md-end
               = render partial: 'notification_avatars', locals: { notification: notification }
               %span.d-inline-block.text-nowrap.ml-2 #{time_ago_in_words(notification.created_at)} ago
 

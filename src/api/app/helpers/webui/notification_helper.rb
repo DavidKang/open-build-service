@@ -56,7 +56,7 @@ module Webui::NotificationHelper
     link_text = case notification.event_type
                 # TODO: add 'Event::ReviewWanted' when converted to BsRequest notification
                 when 'Event::RequestStatechange', 'Event::RequestCreate'
-                  "##{notification.notifiable.number}"
+                  "Request ##{notification.notifiable.number}"
                 when 'Event::CommentForRequest'
                   "Request ##{notification.notifiable.commentable.number}"
                 when 'Event::CommentForProject'

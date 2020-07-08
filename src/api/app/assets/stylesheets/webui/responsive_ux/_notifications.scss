@@ -18,12 +18,12 @@ ul.avatars{
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 3rem;
+  grid-template-columns: 1fr auto;
   grid-template-rows: auto;
   grid-template-areas:
-    "notifiable action"
-    "kind kind"
-    "who-when who-when";
+    "notifiable notifiable"
+    "content content"
+    "who-when action";
   column-gap: 0.5rem;
   row-gap: 0.25rem;
   align-items: start;
@@ -31,6 +31,6 @@ ul.avatars{
   .notifiable { grid-area: notifiable; }
   .who-when { grid-area: who-when; }
   .action { grid-area: action; }
-  .kind { grid-area: kind; }
-  .excerpt { grid-area: excerpt; }
+  .content { grid-area: content; }
+  .who-when, .excerpt { font-weight: 300; }
 }
