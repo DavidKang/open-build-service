@@ -13,15 +13,16 @@ module NotificationService
     end
 
     def call
-      # Find older notifications
+      # Find and delete older notifications
       finder = finder_class.new(notification_scope, @parameters_for_notification)
-
       outdated_notifications = finder.call
       oldest_notification = outdated_notifications.last
       outdated_notifications.destroy_all
+
       # Create a new, up-to-date one
       notification = Notification.create!(parameters(oldest_notification))
       notification.projects << NotifiedProjects.new(notification).call
+      notification
     end
 
     private
