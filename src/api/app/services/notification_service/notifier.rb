@@ -7,14 +7,10 @@ module NotificationService
                         'Event::CommentForPackage',
                         'Event::CommentForRequest'].freeze
     CHANNELS = [:web, :rss].freeze
-    ALLOWED_NOTIFIABLE_TYPES = {
-      'BsRequest' => ::BsRequest,
-      'Comment' => ::Comment
-    }.freeze
-    ALLOWED_CHANNELS = {
-      web: NotificationService::WebChannel,
-      rss: NotificationService::RSSChannel
-    }.freeze
+    ALLOWED_NOTIFIABLE_TYPES = { 'BsRequest' => ::BsRequest,
+                                 'Comment' => ::Comment }.freeze
+    ALLOWED_CHANNELS = { web: NotificationService::WebChannel,
+                         rss: NotificationService::RSSChannel }.freeze
 
     def initialize(event)
       @event = event
