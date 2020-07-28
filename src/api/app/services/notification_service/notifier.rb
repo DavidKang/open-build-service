@@ -35,13 +35,13 @@ module NotificationService
     private
 
     def create_notification_per_subscription(subscription, channel)
-      return unless create_notification?(subscription.subscriber, channel)
+      return unless create_notification?(subscription.subscriber)
 
       ALLOWED_CHANNELS[channel].new(subscription, @event).call
     end
 
-    def create_notification?(subscriber, channel)
-      return false if subscriber.nil? || subscriber.away? || (channel == :rss && !subscriber.try(:rss_token))
+    def create_notification?(subscriber)
+      return false if subscriber.nil? || subscriber.away?
       return false unless notifiable_exists?
 
       true
