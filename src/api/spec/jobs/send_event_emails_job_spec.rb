@@ -5,7 +5,8 @@ RSpec.describe SendEventEmailsJob, type: :job do
 
   describe '#perform' do
     let(:user) { create(:confirmed_user) }
-    let(:group) { create(:group) }
+    let(:other_user) { create(:confirmed_user) }
+    let(:group) { create(:group_with_user, user: other_user) }
     let(:project) { create(:project, name: 'comment_project', maintainer: [user, group]) }
     let(:comment_author) { create(:confirmed_user) }
     let!(:comment) { create(:comment_project, commentable: project, body: "Hey @#{user.login} how are things?", user: comment_author) }
@@ -24,6 +25,7 @@ RSpec.describe SendEventEmailsJob, type: :job do
       let!(:subscription3) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: nil, group: group) }
       let!(:subscription4) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: nil, group: group, channel: :web) }
       let!(:subscription5) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: user, channel: :web) }
+      let!(:subscription6) { create(:event_subscription_comment_for_project, receiver_role: 'maintainer', user: other_user, channel: :web) }
 
       subject! { SendEventEmailsJob.new.perform }
 
@@ -34,11 +36,11 @@ RSpec.describe SendEventEmailsJob, type: :job do
         expect(email.subject).to include('New comment')
       end
 
-      it "not creates an rss notification for user's email if users doesn't have rss token" do
+      it "not creates a rss notification for user's email if users doesn't have rss token" do
         expect(Notification.find_by(subscriber: user, rss: true)).to be_nil
       end
 
-      it "creates an web notification for user's email" do
+      it "creates a web notification for user's email" do
         notification = Notification.find_by(subscriber: user, web: true)
 
         expect(notification.event_type).to eq('Event::CommentForProject')
@@ -47,7 +49,7 @@ RSpec.describe SendEventEmailsJob, type: :job do
         expect(notification.delivered).to be_falsey
       end
 
-      it "creates an web notification with the same raw value of the corresponding event's payload" do
+      it "creates a web notification with the same raw value of the corresponding event's payload" do
         notification = Notification.find_by(subscriber: user, web: true)
         raw_event_payload = Event::Base.first.attributes_before_type_cast['payload']
         raw_notification_payload = notification.attributes_before_type_cast['event_payload']
@@ -55,17 +57,16 @@ RSpec.describe SendEventEmailsJob, type: :job do
         expect(raw_event_payload).to eq(raw_notification_payload)
       end
 
-      it "creates an web notification for group's email" do
+      it "doesn't create a web notification for group's email" do
         notification = Notification.find_by(subscriber: group, web: true)
 
-        expect(notification.event_type).to eq('Event::CommentForProject')
-        expect(notification.event_payload['comment_body']).to include('how are things?')
-        expect(notification.subscription_receiver_role).to eq('maintainer')
-        expect(notification.delivered).to be_falsey
+        expect(notification).to be_nil
       end
 
       it 'only creates two notifications' do
         expect(Notification.count).to eq(2)
+        expect(Notification.find_by(subscriber: other_user, web: true)).not_to be_nil
+        expect(Notification.find_by(subscriber: user, web: true)).not_to be_nil
       end
     end
 
