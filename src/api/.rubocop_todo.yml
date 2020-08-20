@@ -1412,7 +1412,6 @@ Style/IfUnlessModifier:
     - 'app/models/unregistered_user.rb'
     - 'app/models/user.rb'
     - 'app/models/user_ldap_strategy.rb'
-    - 'app/policies/application_policy.rb'
     - 'app/services/package_controller_service/url_generator.rb'
     - 'app/views/models/_package.xml.builder'
     - 'app/views/models/_project.xml.builder'
