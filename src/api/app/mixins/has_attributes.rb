@@ -116,7 +116,7 @@ module HasAttributes
     if filter_attrib_type
       return false unless attr.attrib_type == filter_attrib_type
     end
-    return matches_binary_filter?(filter_binary, attr.binary)
+    matches_binary_filter?(filter_binary, attr.binary)
   end
 
   def render_single_attribute(attr, with_default, builder)
