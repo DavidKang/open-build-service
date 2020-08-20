@@ -1412,8 +1412,6 @@ Style/IfUnlessModifier:
     - 'app/models/unregistered_user.rb'
     - 'app/models/user.rb'
     - 'app/models/user_ldap_strategy.rb'
-    - 'lib/tasks/extract.rake'
-    - 'lib/xpath_engine.rb'
     - 'script/import_database.rb'
     - 'spec/factories/bs_requests.rb'
     - 'spec/factories/packages.rb'
