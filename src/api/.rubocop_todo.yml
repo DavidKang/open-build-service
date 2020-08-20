@@ -1422,12 +1422,6 @@ Style/IfUnlessModifier:
     - 'lib/tasks/extract.rake'
     - 'lib/xpath_engine.rb'
     - 'script/import_database.rb'
-    - 'test/functional/maintenance_test.rb'
-    - 'test/functional/published_controller_test.rb'
-    - 'test/functional/request_controller_test.rb'
-    - 'test/functional/webui/spider_test.rb'
-    - 'test/test_helper.rb'
-    - 'test/unit/schema_test.rb'
 
 # Offense count: 2
 Style/MissingRespondToMissing:
